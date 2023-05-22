@@ -1,11 +1,13 @@
 package usuario;
 
+
 public class Usuario {
 	private String nome;
 	private String senha;
 	private String cpf;
 	private String email;
 	private LocalizacaoAtual localizacao;
+	private String cidadeCadastro;
 	
 	public String getNome() {
 		return nome;
@@ -36,6 +38,12 @@ public class Usuario {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	public String getCidadeCadastro() {
+		return cidadeCadastro;
+	}
+	public void setCidadeCadastro(String cidadeCadastro) {
+		this.cidadeCadastro = cidadeCadastro;
 	}
 	
 	

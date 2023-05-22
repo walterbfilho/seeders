@@ -1,12 +1,19 @@
 package usuario;
 
 public class OngCadastrada {
+	private String nome;
 	private String[] tags;
 	private String descricao;
 	private String pix;
 	private InfoContato infoContato;
 	private EnderecoOng enderecoOng;
 	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	public String[] getTags() {
 		return tags;
 	}
