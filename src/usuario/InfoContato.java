@@ -1,4 +1,5 @@
 package usuario;
+import java.lang.reflect.Field;
 
 public class InfoContato {
 	private String email;
@@ -6,6 +7,7 @@ public class InfoContato {
 	private String linkedin;
 	private String site;
 	private String instagram;
+	private String facebook;
 	
 	public String getEmail() {
 		return email;
@@ -43,6 +45,28 @@ public class InfoContato {
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
 	}
-	private String facebook;
+	
+    public boolean verificarAtributos(Object objeto) {
+        Class<?> classe = objeto.getClass();
+        Field[] campos = classe.getDeclaredFields();
+
+        for (Field campo : campos) {
+            if (campo.getType() == String.class) {
+                campo.setAccessible(true);
+
+                try {
+                    String valor = (String) campo.get(objeto);
+                    if (valor != null && !valor.isEmpty()) {
+                        return true;
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return false;
+    }
 
 }
+

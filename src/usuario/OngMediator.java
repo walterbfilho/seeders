@@ -44,11 +44,7 @@ public class OngMediator {
 			return "O endereço da ong deve ser inserido!!!";
 		}else if(ong.getInfoContato() == null) {
 			return "A ong deve possuir as informações de contato!!!";
-		}else if(StringUtil.ehNuloOuBranco(ong.getInfoContato().getCelular()) ||
-		StringUtil.ehNuloOuBranco(ong.getInfoContato().getEmail()) || 
-		StringUtil.ehNuloOuBranco(ong.getInfoContato().getLinkedin()) ||
-		StringUtil.ehNuloOuBranco(ong.getInfoContato().getSite()) ||
-		StringUtil.ehNuloOuBranco(ong.getInfoContato().getInstagram())) {
+		}else if(ong.getInfoContato().verificarAtributos(ong.getInfoContato())) {
 			return "Insira pelo menos uma informação de contato!!!";
 		}
 		else if(!StringUtil.ehNuloOuBranco(ong.getInfoContato().getEmail()) && ValidacaoEmail.validacaoEmail(ong.getInfoContato().getEmail())){
