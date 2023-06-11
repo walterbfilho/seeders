@@ -6,7 +6,7 @@ public class Usuario {
 	private String senha;
 	private String cpf;
 	private String email;
-	private LocalizacaoAtual localizacao;
+	private Endereco endereco;
 	private String cidadeCadastro;
 	
 	public String getNome() {
@@ -27,11 +27,11 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public LocalizacaoAtual getLocalizacao() {
-		return localizacao;
+	public Endereco getEndereco() {
+		return endereco;
 	}
-	public void setLocalizacao(LocalizacaoAtual localizacao) {
-		this.localizacao = localizacao;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	public String getCpf() {
 		return cpf;
@@ -45,7 +45,10 @@ public class Usuario {
 	public void setCidadeCadastro(String cidadeCadastro) {
 		this.cidadeCadastro = cidadeCadastro;
 	}
-	
+	/*@Override
+	public String obterChave() {
+		return numero+"";
+	}*/
 	
 
 }

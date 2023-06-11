@@ -27,11 +27,11 @@ public class UsuarioDao {
 		try {
 			fos = new FileOutputStream(arq);
 			oos = new ObjectOutputStream(fos);
-			if(usuario.getLocalizacao() == null) {
+			if(usuario.getEndereco() == null) {
 				oos.writeObject(usuario);
 			}else {
 				oos.writeObject(usuario);
-				oos.writeObject(usuario.getLocalizacao());
+				oos.writeObject(usuario.getEndereco());
 			}
 		} catch (Exception e) {
 			throw new RuntimeException("Erro ao incluir usuário");

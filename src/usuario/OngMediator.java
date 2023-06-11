@@ -4,7 +4,7 @@ public class OngMediator {
 	
 	private static OngMediator ongMediatorInstance;
 	
-	private OngDAO ongDAO;
+	protected OngDAO ongDAO;
 	
 	private OngMediator() {
 		this.ongDAO = new OngDAO();
@@ -20,9 +20,10 @@ public class OngMediator {
 	
 	public void incluirOng(OngCadastrada ong) {
 		String valido = validarOng(ong);
-		
 		if(valido == null) {
 			ongDAO.incluirOng(ong); 
+		}else {
+			System.out.println("Deu merda parceiro");
 		}
 	} 
 	
@@ -40,14 +41,14 @@ public class OngMediator {
 			return "Nome da ong é obrigatório!!!";
 		}else if(StringUtil.ehNuloOuBranco(ong.getDescricao())) {
 			return "Descrição da ong é obrigatória!!!";
-		}else if(ong.getEnderecoOng() == null) {
+		}else if(ong.getEndereco() == null) {
 			return "O endereço da ong deve ser inserido!!!";
 		}else if(ong.getInfoContato() == null) {
 			return "A ong deve possuir as informações de contato!!!";
-		}else if(ong.getInfoContato().verificarAtributos(ong.getInfoContato())) {
+		}/*else if(ong.getInfoContato().verificarAtributos(ong.getInfoContato())) {
 			return "Insira pelo menos uma informação de contato!!!";
-		}
-		else if(!StringUtil.ehNuloOuBranco(ong.getInfoContato().getEmail()) && ValidacaoEmail.validacaoEmail(ong.getInfoContato().getEmail())){
+		}*/
+		else if(!ValidacaoEmail.validacaoEmail(ong.getInfoContato().getEmail())){
 			return "Email no formato inválido!!!";
 		}else if(ong.getTags().length == 0){
 			return "A ong deve ter pelo menos uma tag!!!";

@@ -5,11 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class OngDAO { 
+public class OngDAO implements Serializable{ 
 	private static final String FILE_SEP = System.getProperty("file.separator");
-	private static final String DIR_BASE = "." + FILE_SEP + "seeders" + FILE_SEP 
-			+ "ong" + FILE_SEP; 
+	private static final String DIR_BASE = "." + FILE_SEP + "ong" + FILE_SEP + "ongs" + FILE_SEP;
 	private static final String EXT = ".dat";
 	public OngDAO() {
 		File diretorio = new File(DIR_BASE);
@@ -29,7 +29,7 @@ public class OngDAO {
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(ong);
 			oos.writeObject(ong.getInfoContato());
-			oos.writeObject(ong.getEnderecoOng());
+			oos.writeObject(ong.getEndereco());
 		} catch (Exception e) {
 			throw new RuntimeException("Erro ao incluir a ong");
 		} finally {
@@ -43,6 +43,7 @@ public class OngDAO {
 	}
 	public boolean incluirOng(OngCadastrada ong) {
 		File arq = getArquivo(ong.getNome());
+		System.out.println(arq.getAbsolutePath());
 		if (arq.exists()) {
 			return false; 
 		}
@@ -81,5 +82,80 @@ public class OngDAO {
 				fis.close(); 
 			} catch (Exception e) {}			
 		}
+	}
+	
+	public OngCadastrada[] buscarOngsPorTag(String[] tags) {
+		
+		File diretorio = new File(DIR_BASE);
+		
+		if (!diretorio.exists()) {
+			return null;
+		}
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		try {
+			
+			File[] files = diretorio.listFiles((dir, name) -> name.toLowerCase().endsWith(".dat"));
+			
+			if(files.length == 0) {
+				return new OngCadastrada[0];
+			}
+			
+			OngCadastrada[] ongs = new OngCadastrada[files.length];
+			
+			int cont = 0;
+			
+			for(File file: files) {
+				fis = new FileInputStream(file);
+				ois = new ObjectInputStream(fis);	
+				Object objeto = ois.readObject();
+				if(objeto instanceof OngCadastrada) {
+					Integer contSimilaridade = 0;
+					OngCadastrada ong = (OngCadastrada) objeto;
+					for(String tagOng:ong.getTags()) {
+						for(String tagParam:tags) {
+							if(tagParam.equals(tagOng)) {
+								contSimilaridade++;
+							}
+						}
+					}
+					if(contSimilaridade == tags.length) {				
+						ongs[cont] = ong;
+						cont += 1;
+					}
+				}
+			}
+			return  ongs;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("Erro ao ler chave " + e.getMessage());
+		} finally {
+			try {
+				ois.close();
+			} catch (Exception e) {
+			}
+			try {
+				fis.close();
+			} catch (Exception e) {
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		InfoContato infoContato = new InfoContato("leo@gmail.com", "celulardeleo", "leoenterprises", "leomail.com", "leodelas", "leo");
+		Endereco endereco = new Endereco("Rua Bione", "Cidade de Bione", "Estado de Bione", "5205011", 123, "Pais B1", "525");
+		String[] tags = new String[2];
+		tags[0] = "Tag1";
+		tags[1] = "Tag2";
+		OngCadastrada ong = new OngCadastrada("OngTeste", tags, "Descrição massa", "Pix Teste", infoContato, endereco);
+		OngMediator mediator = OngMediator.getInstance();
+		mediator.incluirOng(ong);
+		//System.out.println(file.getAbsolutePath());
+		String[] tagsParam = new String[2];
+		tagsParam[0] = "Tag1";
+		tagsParam[1] = "Tag2";
+		OngCadastrada[] ongsBusca = mediator.ongDAO.buscarOngsPorTag(tagsParam);
+		System.out.println(ongsBusca[0]);
 	}
 }

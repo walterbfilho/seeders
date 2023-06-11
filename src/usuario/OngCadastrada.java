@@ -1,12 +1,24 @@
 package usuario;
 
-public class OngCadastrada {
+import java.io.Serializable;
+
+public class OngCadastrada implements Serializable {
 	private String nome;
 	private String[] tags;
 	private String descricao;
 	private String pix;
 	private InfoContato infoContato;
-	private EnderecoOng enderecoOng;
+	private Endereco endereco;
+	
+	public OngCadastrada(String nome, String[] tags, String descricao, String pix, InfoContato infoContato,
+			Endereco endereco) {
+		this.nome = nome;
+		this.tags = tags;
+		this.descricao = descricao;
+		this.pix = pix;
+		this.infoContato = infoContato;
+		this.endereco = endereco;
+	}
 	
 	public String getNome() {
 		return nome;
@@ -38,11 +50,11 @@ public class OngCadastrada {
 	public void setInfoContato(InfoContato infoContato) {
 		this.infoContato = infoContato;
 	}
-	public EnderecoOng getEnderecoOng() {
-		return enderecoOng;
+	public Endereco getEndereco() {
+		return endereco;
 	}
-	public void setEnderecoOng(EnderecoOng enderecoOng) {
-		this.enderecoOng = enderecoOng;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 

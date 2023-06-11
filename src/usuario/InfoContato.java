@@ -1,13 +1,23 @@
 package usuario;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 
-public class InfoContato {
+public class InfoContato implements Serializable  {
 	private String email;
 	private String celular;
 	private String linkedin;
 	private String site;
 	private String instagram;
 	private String facebook;
+	
+	public InfoContato(String email, String celular, String linkedin, String site, String instagram, String facebook) {
+		this.email = email;
+		this.celular = celular;
+		this.linkedin = linkedin;
+		this.site = site;
+		this.instagram = instagram;
+		this.facebook = facebook;
+	}
 	
 	public String getEmail() {
 		return email;
@@ -46,7 +56,7 @@ public class InfoContato {
 		this.facebook = facebook;
 	}
 	
-    public boolean verificarAtributos(Object objeto) {
+    /*public boolean verificarAtributos(Object objeto) {
         Class<?> classe = objeto.getClass();
         Field[] campos = classe.getDeclaredFields();
 
@@ -66,7 +76,7 @@ public class InfoContato {
         }
 
         return false;
-    }
+    }*/
 
 }
 

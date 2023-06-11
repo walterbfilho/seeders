@@ -1,6 +1,8 @@
 package usuario;
 
-public class Endereco {
+import java.io.Serializable;
+
+public class Endereco implements Serializable {
 	private String rua;
 	private String cidade;
 	private String estado;
@@ -8,6 +10,17 @@ public class Endereco {
 	private Integer numero;
 	private String pais;
 	private String geolocalizacao;
+	
+	public Endereco(String rua, String cidade, String estado, String cep, Integer numero, String pais,
+			String geolocalizacao) {
+		this.rua = rua;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.cep = cep;
+		this.numero = numero;
+		this.pais = pais;
+		this.geolocalizacao = geolocalizacao;
+	}
 	
 	public String getRua() {
 		return rua;
