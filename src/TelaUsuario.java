@@ -93,32 +93,39 @@ public class TelaUsuario {
 		JLabel lblNome = new JLabel("Nome Completo");
 		lblNome.setBounds(10, 90, 80, 14);
 		frame.getContentPane().add(lblNome);
+		lblNome.setVisible(false);
 		this.lblNome = lblNome;
-		
+
 		JLabel lblRua = new JLabel("Rua");
 		lblRua.setBounds(220, 115, 46, 14);
 		frame.getContentPane().add(lblRua);
+		lblRua.setVisible(false);
 		this.lblRua = lblRua;
-		
+
 		JLabel lblEstado = new JLabel("Estado");
 		lblEstado.setBounds(220, 140, 46, 14);
 		frame.getContentPane().add(lblEstado);
+		lblEstado.setVisible(false);
 		this.lblEstado = lblEstado;
-		
+
 		JLabel lblCidade = new JLabel("Cidade");
 		lblCidade.setBounds(10, 140, 46, 14);
 		frame.getContentPane().add(lblCidade);
+		lblCidade.setVisible(false);
 		this.lblCidade = lblCidade;
 		
 		JLabel lblCEP = new JLabel("CEP");
 		lblCEP.setBounds(220, 165, 46, 14);
 		frame.getContentPane().add(lblCEP);
+		lblCEP.setVisible(false);
 		this.lblCEP = lblCEP;
+		
 		
 		JLabel lblNumero = new JLabel("Numero");
 		lblNumero.setBounds(10, 165, 46, 14);
 		frame.getContentPane().add(lblNumero);
-		this.lblNumero = lblNumero;
+		lblNumero.setVisible(false);
+		this.lblNumero = lblNumero;		
 		
 		textFieldNome = new JTextField();
 		textFieldNome.setText("Walter Andé de Sá Barreto Filho");
@@ -126,7 +133,8 @@ public class TelaUsuario {
 		textFieldNome.setBounds(100, 87, 176, 20);
 		frame.getContentPane().add(textFieldNome);
 		textFieldNome.setColumns(10);
-		this.textFieldNome = textFieldNome;
+		textFieldNome.setVisible(false);		
+		this.textFieldNome = textFieldNome;		
 		
 		textFieldCpf = new JTextField();
 		textFieldCpf.setText("132.808.944-41");
@@ -134,14 +142,16 @@ public class TelaUsuario {
 		textFieldCpf.setBounds(100, 112, 99, 20);
 		frame.getContentPane().add(textFieldCpf);
 		textFieldCpf.setColumns(10);
-		this.textFieldCpf = textFieldCpf;
-		
+		textFieldCpf.setVisible(false);
+		this.textFieldCpf = textFieldCpf;		
+
 		textFieldCidade = new JTextField();
 		textFieldCidade.setText("Recife");
 		textFieldCidade.setEnabled(false);
 		textFieldCidade.setBounds(100, 137, 99, 20);
 		frame.getContentPane().add(textFieldCidade);
 		textFieldCidade.setColumns(10);
+		textFieldCidade.setVisible(false);
 		this.textFieldCidade = textFieldCidade;
 		
 		textFieldNumero = new JTextField();
@@ -150,10 +160,12 @@ public class TelaUsuario {
 		textFieldNumero.setBounds(100, 162, 99, 20);
 		frame.getContentPane().add(textFieldNumero);
 		textFieldNumero.setColumns(10);
+		textFieldNumero.setVisible(false);
 		this.textFieldNumero = textFieldNumero;
 		
 		JLabel lblCpf = new JLabel("Cpf");
 		lblCpf.setBounds(10, 115, 46, 14);
+		lblCpf.setVisible(false);
 		frame.getContentPane().add(lblCpf);
 		this.lblCpf = lblCpf;
 		
@@ -163,6 +175,7 @@ public class TelaUsuario {
 		textFieldRua.setBounds(276, 112, 148, 20);
 		frame.getContentPane().add(textFieldRua);
 		textFieldRua.setColumns(10);
+		textFieldRua.setVisible(false);
 		this.textFieldRua = textFieldRua;
 		
 		textFieldCEP = new JTextField();
@@ -170,12 +183,13 @@ public class TelaUsuario {
 		textFieldCEP.setBounds(276, 162, 86, 20);
 		frame.getContentPane().add(textFieldCEP);
 		textFieldCEP.setColumns(10);
+		textFieldCEP.setVisible(false);
 		this.textFieldCEP = textFieldCEP;
 		
 		JButton btnEnviar = new JButton("Enviar");
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 			}
 		});
 		btnEnviar.setBounds(280, 12, 109, 23);
@@ -187,6 +201,7 @@ public class TelaUsuario {
 		comboBoxEstados.setModel(new DefaultComboBoxModel(new String[] {"Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)"}));
 		comboBoxEstados.setBounds(276, 137, 86, 20);
 		frame.getContentPane().add(comboBoxEstados);
+		comboBoxEstados.setVisible(false);
 		this.comboBoxEstados = comboBoxEstados;
 		
 		JButton btnRegistrar = new JButton("Registrar");
@@ -221,7 +236,7 @@ public class TelaUsuario {
 	    frame.getContentPane().add(btnEnviarRegis);
 		btnEnviarRegis.setVisible(false);
 	    this.btnEnviarRegis = btnEnviarRegis;
-	  
+	    
 	    
 	}
 	
