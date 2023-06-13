@@ -41,7 +41,7 @@ public class UsuarioMediator {
 		}
 		else if(StringUtil.ehNuloOuBranco(usuario.getNome())) {
 			return "Nome completo é obrigatório!!!";
-		}else if(ValidacaoEmail.validacaoEmail(usuario.getEmail())){
+		}else if(!ValidacaoEmail.validacaoEmail(usuario.getEmail())){
 			return "Email no formato inválido!!!";
 		}else if(StringUtil.validarSenha(usuario.getSenha())){
 			return "A senha deve conter pelo menos 8 caracteres e pelo menos uma letra maiúscula!!!";

@@ -5,11 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class UsuarioDao { 
+public class UsuarioDao implements Serializable{ 
 	private static final String FILE_SEP = System.getProperty("file.separator");
-	private static final String DIR_BASE = "." + FILE_SEP + "seeders" + FILE_SEP 
-			+ "usuario" + FILE_SEP; 
+	private static final String DIR_BASE = "." + FILE_SEP + "usuario" + FILE_SEP + "usuarios" + FILE_SEP;
 	private static final String EXT = ".dat";
 	public UsuarioDao() {
 		File diretorio = new File(DIR_BASE);
@@ -34,7 +34,7 @@ public class UsuarioDao {
 				oos.writeObject(usuario.getEndereco());
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Erro ao incluir usuário");
+			throw new RuntimeException("Erro ao incluir usuário " + e.getMessage());
 		} finally {
 			try {
 				oos.close();
@@ -75,7 +75,7 @@ public class UsuarioDao {
 			ois = new ObjectInputStream(fis);
 			return (Usuario)ois.readObject(); 
 		} catch (Exception e) {
-			throw new RuntimeException("Erro ao ler o usuário");
+			throw new RuntimeException("Erro ao ler o usuário " + e.getMessage());
 		} finally {
 			try {
 				ois.close(); 

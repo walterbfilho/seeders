@@ -39,8 +39,6 @@ public class TelaUsuario {
 	private JButton btnVoltar;
 	private JComboBox comboBoxEstados;
 	
-	private ButtonGroup bGroupLoginRegistro;
-	
 	private JLabel lblEmail;
 	private JLabel lblSenha;
 	private JLabel lblNome;
@@ -200,18 +198,34 @@ public class TelaUsuario {
 			public void actionPerformed(ActionEvent e) {
 				UsuarioDao userDao = new UsuarioDao();
 				String cpf = textFieldCpf.getText();
+				Usuario user = userDao.buscarUsuario(cpf);
+				String senha = textFieldSenha.getText().trim();
 				
 				if(!ValidadorCPF.ehCpfValido(cpf)) {
 					JOptionPane.showMessageDialog(null, 
 							"Cpf inválido");
 					clearAcess();
-				}else if(userDao.buscarUsuario(cpf) == null) {
+				}else if(user == null) {
 					JOptionPane.showMessageDialog(null, 
 							"Usuário não encontrado");
 					clearAcess();
-				}else {
+				}else if(user.getSenha().equals(senha) ) {
+					
 					JOptionPane.showMessageDialog(null, 
 							"Login com sucesso");
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+								TelaOng window = new TelaOng();
+								window.frame.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+				}else {
+					JOptionPane.showMessageDialog(null, 
+							"Senha inválida");
 				}
 			}
 		});
@@ -257,7 +271,6 @@ public class TelaUsuario {
 		textFieldCpf.setColumns(10);
 		textFieldCpf.setBounds(66, 12, 150, 20);
 		frame.getContentPane().add(textFieldCpf);
-	    this.bGroupLoginRegistro = bGroupLoginRegistro;
 	    this.textFieldCpf = textFieldCpf;
 	    
 	    JButton btnEnviarRegis = new JButton("Enviar Registro");

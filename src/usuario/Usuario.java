@@ -1,7 +1,8 @@
 package usuario;
 
+import java.io.Serializable;
 
-public class Usuario {
+public class Usuario implements Serializable{
 	private String nome;
 	private String senha;
 	private String cpf;

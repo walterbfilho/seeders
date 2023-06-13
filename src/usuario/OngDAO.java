@@ -31,7 +31,7 @@ public class OngDAO implements Serializable{
 			oos.writeObject(ong.getInfoContato());
 			oos.writeObject(ong.getEndereco());
 		} catch (Exception e) {
-			throw new RuntimeException("Erro ao incluir a ong");
+			throw new RuntimeException("Erro ao incluir a ong " + e.getMessage());
 		} finally {
 			try {
 				oos.close();
