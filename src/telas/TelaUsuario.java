@@ -135,7 +135,6 @@ public class TelaUsuario {
 		this.lblNumero = lblNumero;		
 		
 		textFieldNome = new JTextField();
-		textFieldNome.setText("Walter Andé de Sá Barreto Filho");
 		textFieldNome.setEnabled(false);
 		textFieldNome.setBounds(100, 87, 176, 20);
 		frame.getContentPane().add(textFieldNome);
@@ -144,7 +143,6 @@ public class TelaUsuario {
 		this.textFieldNome = textFieldNome;		
 		
 		textFieldEmail = new JTextField();
-		textFieldEmail.setText("login@email.com");
 		textFieldEmail.setEnabled(false);
 		textFieldEmail.setBounds(100, 112, 99, 20);
 		frame.getContentPane().add(textFieldEmail);
@@ -153,7 +151,6 @@ public class TelaUsuario {
 		this.textFieldEmail = textFieldEmail;		
 
 		textFieldCidade = new JTextField();
-		textFieldCidade.setText("Recife");
 		textFieldCidade.setEnabled(false);
 		textFieldCidade.setBounds(100, 137, 99, 20);
 		frame.getContentPane().add(textFieldCidade);
@@ -162,7 +159,6 @@ public class TelaUsuario {
 		this.textFieldCidade = textFieldCidade;
 		
 		textFieldNumero = new JTextField();
-		textFieldNumero.setText("835");
 		textFieldNumero.setEnabled(false);
 		textFieldNumero.setBounds(100, 162, 99, 20);
 		frame.getContentPane().add(textFieldNumero);
@@ -177,7 +173,6 @@ public class TelaUsuario {
 		this.lblEmail = lblEmail;
 		
 		textFieldRua = new JTextField();
-		textFieldRua.setText("Rua padre Carapuceiro");
 		textFieldRua.setEnabled(false);
 		textFieldRua.setBounds(276, 112, 148, 20);
 		frame.getContentPane().add(textFieldRua);
@@ -216,7 +211,7 @@ public class TelaUsuario {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-								TelaOng window = new TelaOng();
+								TelaHome window = new TelaHome(user);
 								window.frame.setVisible(true);
 							} catch (Exception e) {
 								e.printStackTrace();

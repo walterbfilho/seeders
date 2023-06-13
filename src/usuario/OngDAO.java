@@ -104,7 +104,8 @@ public class OngDAO implements Serializable{
 			OngCadastrada[] ongs = new OngCadastrada[files.length];
 			
 			int cont = 0;
-			
+			int qnt = tags.length;
+					
 			for(File file: files) {
 				fis = new FileInputStream(file);
 				ois = new ObjectInputStream(fis);	
@@ -115,11 +116,12 @@ public class OngDAO implements Serializable{
 					for(String tagOng:ong.getTags()) {
 						for(String tagParam:tags) {
 							if(tagParam.equals(tagOng)) {
-								contSimilaridade++;
+									contSimilaridade++;
 							}
+							
 						}
 					}
-					if(contSimilaridade == tags.length) {				
+					if(contSimilaridade == qnt) {				
 						ongs[cont] = ong;
 						cont += 1;
 					}
@@ -141,6 +143,56 @@ public class OngDAO implements Serializable{
 			}
 		}
 	}
+	public OngCadastrada[] buscarOngsPorTag(Boolean semFiltros) {
+        if(semFiltros == false) {
+            return null;
+        }
+
+        File diretorio = new File(DIR_BASE);
+
+        if (!diretorio.exists()) {
+            return null;
+        }
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+
+            File[] files = diretorio.listFiles((dir, name) -> name.toLowerCase().endsWith(".dat"));
+
+            if(files.length == 0) {
+                return new OngCadastrada[0];
+            }
+
+            OngCadastrada[] ongs = new OngCadastrada[files.length];
+
+            int cont = 0;
+
+            for(File file: files) {
+                fis = new FileInputStream(file);
+                ois = new ObjectInputStream(fis);
+                Object objeto = ois.readObject();
+                if(objeto instanceof OngCadastrada) {
+                    OngCadastrada ong = (OngCadastrada) objeto;
+                    ongs[cont] = ong;
+                    cont += 1;
+                }
+            }
+            return  ongs;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao ler chave " + e.getMessage());
+        } finally {
+            try {
+                ois.close();
+            } catch (Exception e) {
+            }
+            try {
+                fis.close();
+            } catch (Exception e) {
+            }
+        }
+    }
 	
 	public static void main(String[] args) {
 		InfoContato infoContato = new InfoContato("leo@gmail.com", "celulardeleo", "leoenterprises", "leomail.com", "leodelas", "leo");

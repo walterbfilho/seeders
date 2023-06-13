@@ -29,6 +29,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 public class TelaOng{
+	private Usuario user = null;
 	JFrame frame;
 	private JTextField textFieldCpf;
 	private JTextField textFieldCelular;
@@ -112,7 +113,6 @@ public class TelaOng{
 		this.lblSenha = lblEmail;
 		
 		textFieldEmail = new JTextField();
-		textFieldEmail.setText("walter@walmail.com");
 		textFieldEmail.setBounds(66, 112, 118, 20);
 		frame.getContentPane().add(textFieldEmail);
 		textFieldEmail.setColumns(10);
@@ -149,28 +149,24 @@ public class TelaOng{
 		this.lblNumero = lblNumero;		
 		
 		textFieldNome = new JTextField();
-		textFieldNome.setText("Walter Andé de Sá Barreto Filho");
 		textFieldNome.setBounds(66, 12, 172, 20);
 		frame.getContentPane().add(textFieldNome);
 		textFieldNome.setColumns(10);	
 		this.textFieldNome = textFieldNome;		
 		
 		textFieldDescricao = new JTextField();
-		textFieldDescricao.setText("walter");
 		textFieldDescricao.setBounds(66, 43, 172, 20);
 		frame.getContentPane().add(textFieldDescricao);
 		textFieldDescricao.setColumns(10);
 		this.textFieldDescricao = textFieldDescricao;		
 
 		textFieldPix = new JTextField();
-		textFieldPix.setText("Recife");
 		textFieldPix.setBounds(66, 83, 118, 20);
 		frame.getContentPane().add(textFieldPix);
 		textFieldPix.setColumns(10);
 		this.textFieldPix = textFieldPix;
 		
 		textFieldNumero = new JTextField();
-		textFieldNumero.setText("835");
 		textFieldNumero.setBounds(277, 193, 86, 20);
 		frame.getContentPane().add(textFieldNumero);
 		textFieldNumero.setColumns(10);
@@ -182,14 +178,12 @@ public class TelaOng{
 		this.lblDescricao= lblDescricao;
 		
 		textFieldRua = new JTextField();
-		textFieldRua.setText("Rua padre Carapuceiro");
 		textFieldRua.setBounds(276, 86, 148, 20);
 		frame.getContentPane().add(textFieldRua);
 		textFieldRua.setColumns(10);
 		this.textFieldRua = textFieldRua;
 		
 		textFieldCEP = new JTextField();
-		textFieldCEP.setText("51");
 		textFieldCEP.setBounds(277, 165, 86, 20);
 		frame.getContentPane().add(textFieldCEP);
 		textFieldCEP.setColumns(10);
@@ -204,7 +198,6 @@ public class TelaOng{
 		ButtonGroup bGroupLoginRegistro = new ButtonGroup();
 		
 		textFieldCelular = new JTextField();
-		textFieldCelular.setText("99999999");
 		textFieldCelular.setColumns(10);
 		textFieldCelular.setBounds(66, 137, 118, 20);
 		frame.getContentPane().add(textFieldCelular);
@@ -217,10 +210,26 @@ public class TelaOng{
 	    		OngMediator ongMediator = OngMediator.getInstance();
 	    		
 	    		String nome = textFieldNome.getText().trim();
-	    		String[] tags = new String[3];
-	    		tags[0] = comboBoxTag1.getSelectedItem().toString();
-	    		tags[1] = comboBoxTag2.getSelectedItem().toString();
-	    		tags[2] = comboBoxTag3.getSelectedItem().toString();
+	    		String[] tagsAux = new String[3];
+	    		
+	    		int cont = 0;
+	    		if(comboBoxTag1.getSelectedItem().toString() != null) {
+	    			tagsAux[cont] = comboBoxTag1.getSelectedItem().toString();
+	    			cont++;
+	    		}
+	    		if(comboBoxTag2.getSelectedItem().toString() != null) {
+	    			tagsAux[cont] = comboBoxTag2.getSelectedItem().toString();
+	    			cont++;
+	    		}
+	    		if(comboBoxTag3.getSelectedItem().toString() != null) {
+	    			tagsAux[cont] = comboBoxTag3.getSelectedItem().toString();
+	    			cont++;
+	    		}
+	    		String[] tags = new String[cont];
+	    		
+	    		for(int i = 0; i<cont; i++) {
+	    			tags[i] = tagsAux[i];
+	    		}
 	    		
 				String descricao = textFieldDescricao.getText().trim();
 				String pix = textFieldPix.getText().trim();
@@ -268,14 +277,12 @@ public class TelaOng{
 	    frame.getContentPane().add(lblLinkedIn);
 	    
 	    textFieldLinkedIn = new JTextField();
-	    textFieldLinkedIn.setText("waltinho");
 	    textFieldLinkedIn.setColumns(10);
 	    textFieldLinkedIn.setBounds(66, 165, 118, 20);
 	    frame.getContentPane().add(textFieldLinkedIn);
 	    this.textFieldLinkedIn = textFieldLinkedIn;
 	    
 	    textFieldSite = new JTextField();
-	    textFieldSite.setText("waltao.com");
 	    textFieldSite.setColumns(10);
 	    textFieldSite.setBounds(66, 190, 118, 20);
 	    frame.getContentPane().add(textFieldSite);
@@ -286,7 +293,6 @@ public class TelaOng{
 	    frame.getContentPane().add(lblSite);
 	    
 	    textFieldInstagram = new JTextField();
-	    textFieldInstagram.setText("ehOwaltas");
 	    textFieldInstagram.setColumns(10);
 	    textFieldInstagram.setBounds(66, 218, 118, 20);
 	    frame.getContentPane().add(textFieldInstagram);
@@ -297,7 +303,6 @@ public class TelaOng{
 	    frame.getContentPane().add(lblInstagram);
 	    
 	    textFieldFacebook = new JTextField();
-	    textFieldFacebook.setText("walterAndre");
 	    textFieldFacebook.setColumns(10);
 	    textFieldFacebook.setBounds(66, 246, 118, 20);
 	    frame.getContentPane().add(textFieldFacebook);
@@ -342,7 +347,6 @@ public class TelaOng{
 	    frame.getContentPane().add(lblCidade);
 	    
 	    textFieldCidade = new JTextField();
-	    textFieldCidade.setText("Recife");
 	    textFieldCidade.setColumns(10);
 	    textFieldCidade.setBounds(276, 137, 86, 20);
 	    frame.getContentPane().add(textFieldCidade);

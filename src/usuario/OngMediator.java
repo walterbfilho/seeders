@@ -1,10 +1,13 @@
 package usuario;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class OngMediator {
 	
 	private static OngMediator ongMediatorInstance;
 	
-	protected OngDAO ongDAO;
+	public OngDAO ongDAO;
 	
 	private OngMediator() {
 		this.ongDAO = new OngDAO();
@@ -56,6 +59,42 @@ public class OngMediator {
 			return null;
 		}
 	}
-	
+	public GeoLocatorWrapper ordenarOngsPorDistancia(Usuario usuario) {
+		GeoLocatorWrapper wrapper= new GeoLocatorWrapper();
+		OngCadastrada[] todasOngs = this.ongDAO.buscarOngsPorTag(true);
+		Double[] doubleLst = new Double[todasOngs.length];
+		int contLstDouble = 0;
+		
+		for(OngCadastrada ong:todasOngs) {
+			System.out.println(ong.getNome());
+		}
+		
+		Geolocalizacao geo = new Geolocalizacao();
+		Map<Double, OngCadastrada> mapOngDistancia = new HashMap<>();
+		for(OngCadastrada ong:todasOngs) {
+			Double distanciaMetros = geo.distance(usuario.getEndereco().getLatitude(), ong.getEndereco().getLatitude(), usuario.getEndereco().getLongitude(), ong.getEndereco().getLongitude());
+			mapOngDistancia.put(distanciaMetros, ong);
+			doubleLst[contLstDouble] = distanciaMetros;
+			contLstDouble++;
+		}
+		
+        for (int i = 0; i < doubleLst.length - 1; i++) {
+            for (int k = i + 1; k < doubleLst.length; k++) {
+                if (doubleLst[i] > doubleLst[k]) {
+                    Double aux = doubleLst[i];
+                    doubleLst[i] = doubleLst[k];
+                    doubleLst[k] = aux;
+                }
+            }
+        }
+        
+        OngCadastrada[] lstOngReturn = new OngCadastrada[todasOngs.length];
+        for(int i=0;i<doubleLst.length;i++) {
+        	lstOngReturn[i] = mapOngDistancia.get(doubleLst[i]);
+        }
+        wrapper.ongs = lstOngReturn;
+        wrapper.distancias = doubleLst;
+		return wrapper;
+	}
 	
 }
