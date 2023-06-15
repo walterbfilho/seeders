@@ -1,4 +1,10 @@
-package usuario;
+package usuario.negocio;
+
+import geral.entidade.StringUtil;
+import geral.negocio.ValidacaoEmail;
+import geral.negocio.ValidadorCPF;
+import usuario.dao.UsuarioDao;
+import usuario.entidade.Usuario;
 
 public class UsuarioMediator {
 	

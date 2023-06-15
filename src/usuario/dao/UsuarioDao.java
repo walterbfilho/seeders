@@ -1,4 +1,4 @@
-package usuario;
+package usuario.dao;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
+import usuario.entidade.Usuario;
 
 public class UsuarioDao implements Serializable{ 
 	private static final String FILE_SEP = System.getProperty("file.separator");

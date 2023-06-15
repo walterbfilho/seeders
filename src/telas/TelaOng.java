@@ -1,32 +1,23 @@
 package telas;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.BorderLayout;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 
-import usuario.*;
-
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JCheckBox;
-import javax.swing.ListSelectionModel;
-import javax.swing.JSpinner;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
+import geral.entidade.Endereco;
+import geral.entidade.InfoContato;
+import ong.entidade.OngCadastrada;
+import ong.negocio.OngMediator;
+import usuario.entidade.Usuario;
 
 public class TelaOng{
 	private Usuario user = null;

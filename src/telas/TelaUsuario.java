@@ -1,25 +1,23 @@
 package telas;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.BorderLayout;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 
-import usuario.*;
-
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
+import geral.entidade.Endereco;
+import geral.negocio.ValidadorCPF;
+import usuario.dao.UsuarioDao;
+import usuario.entidade.Usuario;
+import usuario.negocio.UsuarioMediator;
 
 public class TelaUsuario {
 

@@ -1,4 +1,4 @@
-package usuario;
+package geral.entidade;
 
 public class StringUtil {
 

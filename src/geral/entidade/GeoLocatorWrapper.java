@@ -1,4 +1,6 @@
-package usuario;
+package geral.entidade;
+
+import ong.entidade.OngCadastrada;
 
 public class GeoLocatorWrapper{
 	public OngCadastrada[] ongs;

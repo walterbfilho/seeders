@@ -1,4 +1,4 @@
-package usuario;
+package ong.dao;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,6 +6,11 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
+import geral.entidade.Endereco;
+import geral.entidade.InfoContato;
+import ong.entidade.OngCadastrada;
+import ong.negocio.OngMediator;
 
 public class OngDAO implements Serializable{ 
 	private static final String FILE_SEP = System.getProperty("file.separator");

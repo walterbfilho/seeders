@@ -1,4 +1,4 @@
-package usuario;
+package ong.negocio;
 
 public class PesquisarONG {
 	public static void buscarOngsPorTag(String[] tags) {

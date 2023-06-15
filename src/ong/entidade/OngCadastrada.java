@@ -1,6 +1,9 @@
-package usuario;
+package ong.entidade;
 
 import java.io.Serializable;
+
+import geral.entidade.Endereco;
+import geral.entidade.InfoContato;
 
 public class OngCadastrada implements Serializable {
 	private String nome;

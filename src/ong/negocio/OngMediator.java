@@ -1,7 +1,15 @@
-package usuario;
+package ong.negocio;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import geral.entidade.GeoLocatorWrapper;
+import geral.entidade.Geolocalizacao;
+import geral.entidade.StringUtil;
+import geral.negocio.ValidacaoEmail;
+import ong.dao.OngDAO;
+import ong.entidade.OngCadastrada;
+import usuario.entidade.Usuario;
 
 public class OngMediator {
 	

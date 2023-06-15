@@ -1,6 +1,5 @@
-package usuario;
+package geral.entidade;
 import java.io.Serializable;
-import java.lang.reflect.Field;
 
 public class InfoContato implements Serializable  {
 	private String email;

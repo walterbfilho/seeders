@@ -1,4 +1,4 @@
-package usuario;
+package geral.negocio;
 
 public class ValidadorCPF {
     

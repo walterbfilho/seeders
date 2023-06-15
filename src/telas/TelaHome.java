@@ -2,24 +2,19 @@ package telas;
 
 import java.awt.Component;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JRadioButton;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTable;
-
-import usuario.*;
-
-import javax.swing.JSlider;
-import javax.swing.JSeparator;
-import javax.swing.JComboBox;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
-import javax.swing.JList;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import geral.entidade.Geolocalizacao;
+import ong.entidade.OngCadastrada;
+import ong.negocio.OngMediator;
+import usuario.entidade.Usuario;
 
 public class TelaHome {
 

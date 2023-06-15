@@ -1,6 +1,8 @@
-package usuario;
+package usuario.entidade;
 
 import java.io.Serializable;
+
+import geral.entidade.Endereco;
 
 public class Usuario implements Serializable{
 	private String nome;
