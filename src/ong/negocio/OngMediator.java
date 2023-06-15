@@ -73,10 +73,6 @@ public class OngMediator {
 		Double[] doubleLst = new Double[todasOngs.length];
 		int contLstDouble = 0;
 		
-		for(OngCadastrada ong:todasOngs) {
-			System.out.println(ong.getNome());
-		}
-		
 		Geolocalizacao geo = new Geolocalizacao();
 		Map<Double, OngCadastrada> mapOngDistancia = new HashMap<>();
 		for(OngCadastrada ong:todasOngs) {

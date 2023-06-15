@@ -20,7 +20,6 @@ import ong.negocio.OngMediator;
 import usuario.entidade.Usuario;
 
 public class TelaOng{
-	private Usuario user = null;
 	JFrame frame;
 	private JTextField textFieldCpf;
 	private JTextField textFieldCelular;

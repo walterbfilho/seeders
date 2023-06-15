@@ -48,7 +48,6 @@ public class OngDAO implements Serializable{
 	}
 	public boolean incluirOng(OngCadastrada ong) {
 		File arq = getArquivo(ong.getNome());
-		System.out.println(arq.getAbsolutePath());
 		if (arq.exists()) {
 			return false; 
 		}
@@ -213,6 +212,5 @@ public class OngDAO implements Serializable{
 		tagsParam[0] = "Tag1";
 		tagsParam[1] = "Tag2";
 		OngCadastrada[] ongsBusca = mediator.ongDAO.buscarOngsPorTag(tagsParam);
-		System.out.println(ongsBusca[0]);
 	}
 }
